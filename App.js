@@ -4,6 +4,7 @@ import {
   StyleSheet,
   StatusBar,
   Text,
+  Linking,
   View,
   TouchableOpacity,
   Image,
@@ -12,7 +13,7 @@ import {
 import PinchZoomView from 'react-native-pinch-zoom-view';
 import {Audio} from 'expo-av';
 let radio1 = new Audio.Sound((mode = {staysActiveInBackground: true}));
-let radio2 = new Audio.Sound((mode = {staysActiveInBackground: true}));
+//let radio2 = new Audio.Sound((mode = {staysActiveInBackground: true}));
 let time = 0;
 let radioLength = 0;
 
@@ -27,26 +28,31 @@ export default class App extends Component {
   componentWillMount() {
     Audio.setAudioModeAsync({staysActiveInBackground: true});
     this.setState(state => {
-      state.radioStartTime = new Date('08/13/2019');
+      state.radioStartTime = new Date('10/11/2019');
     });
     radio1
-      .loadAsync(require('./src/assets/sounds/radio1.mp3'), {}, false)
-      .then(() => {})
-      .catch(error => {
-        console.log(error);
-      });
-    radio2
-      .loadAsync(require('./src/assets/sounds/radio2.mp3'), {}, false)
+      .loadAsync(require('./assets/sounds/radio1.mp3'), {}, false)
       .then(() => {
         this.setState(state => {
           state.radioFileLoaded = true;
           return state;
         });
-        console.log('done');
       })
       .catch(error => {
         console.log(error);
       });
+    //radio2
+    //  .loadAsync(require('./assets/sounds/radio2.mp3'), {}, false)
+    //  .then(() => {
+    //    this.setState(state => {
+    //      state.radioFileLoaded = true;
+    //      return state;
+    //    });
+    //    console.log('done');
+    //  })
+    //  .catch(error => {
+    //    console.log(error);
+    //  });
   }
 
   render() {
@@ -155,11 +161,11 @@ export default class App extends Component {
                 ...styles.textHeader,
                 ...{fontSize: 30, paddingBottom: 20, alignSelf: 'center'},
               }}>
-              Factions
+              Current Game Info
             </Text>
-            <Text style={styles.textHeader}>Raider Rampage</Text>
+            <Text style={styles.textHeader}>Monster Mash</Text>
             <Text style={styles.text}>
-              {`Joplin Wasteland is proud to present our next event, Raider Rampage. In our last event we saw a wave of new wanderers pour into the town, giving life to the once war torn town of Wata-Pa. This would soon bring in a host of new groups. The First is, The Half-Life Horde, a vicious group of raiders hell bent of forming the wasteland into what they deem fit. The second group is the town guards and a company of NCR scouts hot on the tail of a fleeing lost Caesar's legion group and their leader. All clues point to Wate-Pa, but first they have to deal with this horde of raiders and help save the town. Will you help the Raiders burn the heretics? Will you help save the town and bring peace to Wate-Pa? Or will you go on your own adventure in a now more dangerous wasteland?\n\nTickets Prices- 20$ Game charge fee\n\nTime events- 21st of September, 9am sign in, 1030am game briefs, 11am game begins, 7pm game ends.\n\nPlease read the rules as it outlines the safely guild lines as this is an airsoft and larp event.\n\nIn this event all player ammo will be proved at the event, giving you the player the choice to buy your ammo in game from any ammo vendor.\n\nAll players start out as wanderers and can choose to join/ quit Npc groups as they see fit. The two groups in this game are the Town Guards and the The Half-Life Horde. The Town Guards are made up of the Wate-Pa Guards who help keep the peace, a company of NRC Troopers who are the main defenders of the town, and the Town Scouts who keeps an eye on the raiders and leads scouting missions into the wasteland. All of which help defend the town and keep the peace. Their tape color will be bright light blue. The Half-Life Horde are made up of the Ashen Slaves, a group of crazy lightly armored raiders, the Burn Guns, a group of ex gunners that went full on raider and the Atomic Knights, a group of heavy armored raiders calling themselves the holy knights of wasteland. Each raider group works together to burn the heretics and raid the wasteland of Wate-Pa. Their tape color will be bright yellow.\n\nWhen a player joins a said group they will be marked with their colors and will now spawn at said group's spawn, until they quit that group. Note if a player is apart of a Npc group they can not use the Wanderer spawn. Players do not have to join a Npc group and may wander about as they wish and will share the wanderer spawn with other wanderers.  `}
+              {`Joplin Wasteland is proud to present our next event, Monster Mash! In our last event we saw a horde of raiders lay siege to the town of Wata-Pa. The town may have held up, but at what cost? In the end the raiders took what they wanted and left. Now dark times fall on the town as they have no mayor and monsters have started to roam outside the town, feeding on the dead. All while the left over raiders form the Order of the Claw to worship these beasts and it seems the mob boss Ace is back in town. Will you help the new sheriff and his deputy bring law and order to the town of Wate-Pa? Will you help the Order of the Claw bring about an age of monsters? Will you go on a monster raid with the hunters of Woodsend or be a monster? Will the mob hire you to collect a kill? Or will you go out on your adventure in a colder, darker and more split wasteland? Find out in our next game, Joplin Wasteland Monster Mash!\n\nTickets Prices- 20$ Game charge fee\n\nTime events- 16th of November, 9am sign in, 1030am game briefs, 11am game begins, 5pm game ends.\n\nIn this event all player ammo will be proved at the event, giving you the player the choice to buy your ammo in game from any ammo vendor.\n\nAll players start out as wanderers and can choose to join/quit Npc groups as they see fit. The two groups in this game are the Town Guards and the Order of the Claw. The Town Guards are made up of the Wate-Pa Guards who help keep the peace and enforce the law. Their tape color will be bright light blue. The Order of the Claw are made up of ex raiders that wish to spread the word of the beast, tax the land and kill those that don't pay up or offer their help to the cause. Their tape color will be bright yellow.\n\nWhen a player joins a said group they will be marked with their colors and will now spawn at said group's spawn, until they quit that group. Note if a player is apart of a Npc group they can not use the Wanderer spawn. Players do not have to join a Npc group and may wander about as they wish and will share the wanderer spawn with other wanderers.`}
             </Text>
           </ScrollView>
         </View>
@@ -249,49 +255,18 @@ export default class App extends Component {
                   this.state.activeStation === 'jar1' &&
                     styles.radioStationTextActive,
                 ]}>
-                Joplin Atomic Radio FM
+                Ozark Mountain Radio - FM
               </Text>
             </TouchableOpacity>
           )}
-          {this.state.radioFileLoaded && (
-            <TouchableOpacity
-              onPress={() => {
-                if (this.state.activeStation !== 'jar2') {
-                  var diff = new Date().getTime();
-
-                  // console.log(`\nHH:MM:SS:MlS`)
-                  // console.log(formatMilliseconds(diff))
-
-                  radio2.setIsLoopingAsync(true);
-                  radio2.getStatusAsync().then(function(result) {
-                    let len = result.durationMillis;
-                    radioLength = result.durationMillis;
-                    time = formatMilliseconds(diff % len);
-                    console.log(diff % len);
-                    console.log(formatMilliseconds(diff % len));
-                    radio2.playFromPositionAsync(diff % len);
-                  });
-                } else {
-                  radio2.stopAsync();
-                }
-
-                this.setState(state => {
-                  state.activeStation === 'jar2'
-                    ? (state.activeStation = '')
-                    : (state.activeStation = 'jar2');
-                  return state;
-                });
-              }}>
-              <Text
-                style={[
-                  styles.radioStationText,
-                  this.state.activeStation === 'jar2' &&
-                    styles.radioStationTextActive,
-                ]}>
-                Joplin Atomic Radio AM
-              </Text>
-            </TouchableOpacity>
-          )}
+            <TouchableOpacity onPress={() => {
+              Linking.openURL('https://drive.google.com/file/d/18N5mt-UG0r-9vybiVJ_mlu5rCUG1h_tt/vie://drive.google.com/file/d/1Gx63VFtjXlBBCeSDaah4O9CJ_u0S0oel/view')
+            }}>
+            <Text
+              style={[styles.radioStationText]}>
+              Joplin Atomic Radio [DOWNLOAD]
+            </Text>
+          </TouchableOpacity>
           <View
             style={{
               width: '100%',
@@ -312,15 +287,6 @@ export default class App extends Component {
                 styles.radioStationTextOutOfRange,
               ]}>
               Joplin Atomic Radio FM - ACQUIRING SIGNAL
-            </Text>
-          )}
-          {!this.state.radioFileLoaded && (
-            <Text
-              style={[
-                styles.radioStationText,
-                styles.radioStationTextOutOfRange,
-              ]}>
-              Joplin Atomic Radio AM - ACQUIRING SIGNAL
             </Text>
           )}
           <Text
@@ -416,7 +382,7 @@ const styles = StyleSheet.create({
     paddingTop: 100,
   },
   map: {
-    width: 2000,
+    width: 2100,
     paddingTop: 100,
   },
   mapImage: {
