@@ -102,7 +102,9 @@ export default class App extends Component {
     const Rules = () => {
       return (
         <View style={[styles.content, styles.rules]}>
-          <ScrollView style={{padding: 30}}>
+          <ScrollView
+            contentContainerStyle={{paddingBottom: 80}}
+            style={{padding: 30}}>
             <Text
               style={{
                 ...styles.textHeader,
@@ -110,40 +112,295 @@ export default class App extends Component {
               }}>
               Wasteland Event
             </Text>
-            <Text style={styles.textHeader}>Game safety rules</Text>
-            <Text style={styles.text}>
-              {`Safety/ Surrender Kills - Surrender kills are when you are within about 20ft or closer of your opponent. You may yell out surrender, if your opponent doesn’t surrender you may shoot them.\n\nEngagement Non Fps Rules - No blind fire and no physical fighting, other then with boffer weapons. Ricochet bb’s do not count and gun hits do not count as being hit. At all times you must keep your safety eye pro on. If you are in a safe area you must have your mag out, gun cleared, and on safe. You may have your eye pro off in a safe area.\n\nEngagement Fps Rules- All guns will be measured using .20G BB’s \n\n400Fps and under, no minimum engagement distance. You may use a burst mode up to 3 BB’s per trigger pull or use full-auto up to a 2 second trigger pull burst, semi only indoors.\n\nIf you are using a MG you may have a 3 second trigger pull burst and you must a sidearm that shoots under 400Fps and that can use semi fire to use indoors. MG that shoot under 400Fps- 30ft minimum engagement distance. MG that shoot 401 to 450 Fps 60ft minimum engagement distance.\n\n401-450Fps  Bolt and or semi only. Minimum engagement distance 60ft and you must have a sidearm that shoots under 400Fps and that can use Semi fire to use indoors.\n\n451-500Fps Bolt only.  Minimum engagement distance 90ft. You must have a sidearm that shoots under 400Fps and that can use semi fire to use indoors. \n\nEye Pro - Full seal eye pro is a must. If under the age of 18, then have full face protection. Keep eye pro on at all times, unless you are in a safety area. `}
-            </Text>
             <Text style={styles.textHeader}>BASICS</Text>
+            <Text style={styles.text}>Reloading</Text>
             <Text style={styles.text}>
-              RELOADING - The only two ways to get ammo is to find ammo in the
-              “wasteland” or to buy ammo from the NPC’s. Prices may be different
-              for each vendor and the weight they sell for Nuka Caps. Friendly
-              fire counts - If you get hit by a friendly faction or team member,
-              then you then fall under the bleeding out rules. Field items -
+              The only two ways to find ammo in the “wasteland” or to buy ammo
+              from the NPCs. Prices may be different for each vendor and the
+              weight they sell for Nuka Caps.
+            </Text>
+            <Text style={styles.text}>In Game Currency</Text>
+            <Text style={styles.text}>
+              The Currency used in this game are marked “Nuka Caps.” You can
+              earn these caps by performing roles, quests, jobs, looting other
+              players/ NPC’s, selling items, and/or looting loot boxes. Red caps
+              are worth one, blue are worth five and yellow are worth ten.
+              Before the game begins you, the player, will be given ten caps to
+              start off with.{' '}
+            </Text>
+            <Text style={styles.text}>Grenade Count</Text>
+            <Text style={styles.text}>
+              Players are allowed to begin the game with a limited number of
+              grenade-type weapons. The number of “grenade points” is six. Mini
+              nukes count as two points, elemental smoke/frag grenades of any
+              kind count as one. White smoke grenades do not count towards this
+              number, and are deemed personal items.{' '}
+            </Text>
+            <Text style={styles.text}>Friendly fire counts</Text>
+            <Text style={styles.text}>
+              If you get hit by a friendly faction or team member you will still
+              fall under the effects of whatever was used to hit you.
+            </Text>
+            <Text style={styles.text}>Field items</Text>
+            <Text style={styles.text}>
               Field items will be marked by orange tape, you may use these items
-              in game and loot these items off of "bleeding out people." Purple
-              taped items - are not to be touched or messed with, as they may be
-              personal player or NPC items. You can not use them, take, or move
-              them.
+              in game and loot these items off of "bleeding out people.”
+            </Text>
+            <Text style={styles.text}>Purple taped items</Text>
+            <Text style={styles.text}>
+              These are not to be touched or messed with, as they may be
+              personal player or NPC items. You can not use them, take them, or
+              move them.
             </Text>
             <Text style={styles.textHeader}>COMBAT</Text>
+            <Text style={styles.text}>Airsoft</Text>
             <Text style={styles.text}>
-              {`AIRSOFT - When shot, you then have a two minute bleed out. You must use the full two minute bleed out before you go back to spawn, though anyone can be revived by anyone with a stimpak during this bleed out time.\n\nMELEE - If you melee someone that is an instant kill and that player has no bleed out and must go to their respawn point, but before they leave you may loot the player before he leaves. You may melee someone that is “bleeding out.”  But you can not melee teammates. \n\nENERGY (Foam Dart guns) - Energy weapons are designated by nerf darts or foam balls. Laser gun rounds go through armor and kill power armor users. When hit by a laser weapon, you will start to “bleed out”. Laser ammo can only be bought at a trader or found in loot. This will look like a ready to use mag with darts in it. You MAY NOT unload/load a nerf magazine no matter where you got it. Only traders and refs are authorized to do this. Players are not allowed to pick up used darts after they have been fired, unless authorized to do so by an npc or ref. \n\nEXPLOSIVES - Frag Grenades (enola gaye, launched grenades, sound grenades and tornado/twister) 20ft kill zone. Frag grenades stun power armor users for 30 seconds.\n\nMini Nukes, mortar artillery and howitzer artillery (rocket launcher)- Mini nuke launchers/ rocket launchers and mortar/ howitzer artillery rounds have the same type of killzone, which is 30ft from the fired round and players are “bleeding out”. 5ft within fired round and players are instantly dead and must go back to spawn. \n\nSmoke Grenades - Certain smoke grenades fill a role at this event and are listed below, if you do not see a color listed it is just a regular smoke grenade and only serves as cover.\n\nGas Grenades (yellow) - Gas grenades are designated by yellow and black smoke, and work in the same fashion as other grenades but anyone wearing a proper gas apparatus is immune. Proper gas apparatus will be designated as a real gas mask, respirator, or full face eye protection with attached hoses and tanks. PA users are immune to gas. 10ft zone of affect and the smoke itself counts as an area of affect. Any unprotected player caught in this area of effect is now bleeding out.\n\nFire Grenades (red) - These grenades are designated by red smoke and work like other grenades with no way to escape the flames. PA users are immune to the effects of fire. 10ft zone of affect and the smoke itself counts as an area of affect. Any unprotected player caught in this area of effect is now bleeding out.\n\nRadiation Grenades (Green) - Radiation grenades work like normal grenades except when affected the victim may use a “rad-away stick” immediately and leave the area otherwise they are now bleeding out. PA users are immune to radiation. 10ft zone of affect and the smoke itself counts as an area of affect. Any unprotected player caught in this area of effect is now bleeding out.\n\nEMP grenades (Blue) -  Stun PA users for duration of smoke. 10ft zone of affect and the smoke itself counts as an area of affect.\nTRAPS - Traps work like a melee attack, if you get hit by a bb or you are within the 5ft Kill zone of a trap you are dead, no bleed out, go back to spawn. For safety and game play do not physically move or mess with the trap. Even if you see the trap before it goes off do not move or mess with it. Shooting or throwing items at traps is legal. Traps go through armor, shields and power armor users are stunned for 30 seconds after being hit by a trap.\n\nARMOR - Ballistic Armor (bb proof) - Metal, tires, hard plastics hardened leather or EVA foam may be used to make armor. If you are hit in an armor piece by an airsoft round you are still in, but MUST yell out “armor hit.”\n\nPOWER ARMOR (Juggernaut) - Power armor must be approved by admins. Contact admins if you want to be eligible for power armor. Power armor can only be “killed” by laser weapons, mini nukes, mortar and howitzer artillery fired shells. One shot from a laser weapon kills a power armor user. If the Power armor user is within the “instant kill zone 5ft” of a mini nuke, mortar or howitzer fired shell they are dead. If the power armor user is within the “bleeding out” zone the user is stunned for 30 seconds. Power armor users are fitted with a “stun plate” shooting them here with an airsoft gun will stun them for 10 seconds. When a power armor user is stunned, they can be killed with an explosive weapon. Power Armor users can also be killed by removing their core from their back.  Power Armor users can not pick the agility perk as their perk.\n\nSHIELDS - Shields may be made of metal, plastic, kevlar or wood. A few examples could be say a stop sign, riot shield, tower shield, etc. Shield’s stop melee attacks, airsoft rounds and laser rounds. For safety reasons there is no shield bashing. All Shields must be approved before they can be used.\n\n`}
+              When shot, you then have a two minute bleed out. You must use the
+              full two minute bleed out before you go back to spawn, though
+              anyone can be revived by anyone else with a stimpak during this
+              bleed out time.
             </Text>
-            <Text style={styles.textHeader}>
-              {`MEDICAL (HEALING) and LOOTING`}
+            <Text style={styles.text}>Melee</Text>
+            <Text style={styles.text}>
+              If you melee someone, that is an instant kill and that player has
+              no bleed out and must go to their respawn point, but before they
+              leave you may loot the player. You may melee someone that is
+              “bleeding out.” To melee, tap or lightly swipe your melee weapon
+              on to your target and say “melee.” You may use a two hand touch to
+              melee your victims, again say “melee” when doing so.
+            </Text>
+            <Text style={styles.text}>Energy (Foam Dart guns)</Text>
+            <Text style={styles.text}>
+              Energy weapons are designated by Nerf darts or foam balls. Laser
+              gun rounds go through armor and kill power armor users. When hit
+              by a laser weapon, you will start to “bleed out”. Laser ammo can
+              only be bought at a trader or found in loot. This will look like a
+              ready to use mag with darts in it. You MAY NOT unload/load a nerf
+              magazine no matter where you got it. Only traders and refs are
+              authorized to do this. Players are not allowed to pick up used
+              darts after they have been fired, unless authorized to do so by an
+              NPC or ref.
+            </Text>
+            <Text style={styles.text}>Explosives</Text>
+            <Text style={styles.text}>
+              Frag Grenades (Enola Gaye, launched grenades, sound grenades and
+              tornado/twister grenades) There is a 20ft kill zone from the
+              grenade (20ft radius) . Frag grenades stun power armor users for
+              30 seconds.
             </Text>
             <Text style={styles.text}>
-              {`Bleed out - After the two minute bleed out you are dead. If you get looted once, then you go back to your spawn, even if your two minutes are not up.  From there you wait 1 minute to spawn back in.\n\nStimpaks - To use, rip the paper off the stimpak, then push the stimpak on to the “bleeding” player. After that you or the player that as been simpaked MUST yell out SIMPAK! The player is then back in the game. You can not move or shoot when “bleeding out”, unless someone moves you or you have the Endurance perk. If the simpak has exposed plastic or the wrapper is incomplete it can not be used.\n\nLooting - You may loot people, that are "bleeding out." You may only take two items of the following, off of the person: Up to four Nuka Caps, one field gun, one magazine, one piece of field armor, one field shield or one field melee weapon.\n\nCarrying Bodies - You may use a two hand drag if your buddy is down. This means that if you put both your hands on your buddy he may get up and WALK to a new destination. `}
+              Mini Nukes, Mortar Artillery and Howitzer Artillery (rocket
+              launcher)- Mini nuke launchers/ rocket launchers and mortar/
+              howitzer artillery rounds have the same type of killzone, which is
+              30ft from the fired round (30 ft radius) and cause players to
+              “bleed out.” If caught 5ft within fired round, players are
+              instantly dead and must go back to spawn and cannot be looted.
+              Approval is required for these rounds to follow standard. Mini
+              nukes are miniature nuclear bombs and must be of an approved
+              design. Artillery and artillery/howitzer rounds are simply mini
+              Nerf vortex howlers. These must be the ones with whistles to
+              count.
             </Text>
-            <Text style={styles.textHeader}>QUESTS</Text>
+            <Text style={styles.text}>Smoke Grenades</Text>
             <Text style={styles.text}>
-              {`Quest items will be marked with pink tape and will have the quest title on it. You may not move quest items unless you are on that quest to get that quest item. `}
+              Certain smoke grenades fill a role at this event and are listed
+              below, if you do not see a color listed it is just a regular smoke
+              grenade and only serves as cover. There is a 10ft zone of affect
+              from each grenade (10ft radius) and the smoke itself counts as an
+              area of affect. Gas Grenades (Yellow)
             </Text>
-            <Text style={styles.textHeader}>PERKS</Text>
-            <Text style={{...styles.text, ...{paddingBottom: 75}}}>
-              {`Every player gets one Starting Perk, SP for short, these SP’s are, Strength, Perception, Endurance, Charisma, Intelligence, Agility and Luck. Your starting perk will be labeled by your arm band that you get after you pay.\n\nStrength - Gives you the ability to “pick up” a player but with more options. When touching the player, you may use one hand, and you can run with your “bleeding out” buddy to a safer area. Note, your buddy is still “bleeding out”  when moving him.\n\nPerception - Gives you a map of possible trap areas, possible loot spots. Players with this perception can be trained to use in game mortar artillery and howitzer artillery. Note only players with this perk and being trained to use the artillery, can use or move the artillery cannons.\n\nEndurance - Gives you the ability to crawl when ‘Bleeding out” still have your dead rag out though.\n\nCharisma - Unlocks better prices, more quests, or special items with NPCS or Faction leaders.\n\nIntelligence - Unlocks different quests, specials items, and gives out intelligence codes for non-quest combo lock boxes.\n\nAgility - Allows you to leave the area of effect of all smoke based attacks. Once the smoke lands and you are in the area of effect, which is 10ft or wherever the smoke moves, you can leave the area without being affected by that colored smoke, though you must leave that area immediately and must yell out AGILITY! Note you can not enter into that area of effect of the colored smoke or you will then be under the effect of that color of smoke\n\nLuck - Gives you ability to potentially get out of trouble with NPCs or Faction Leaders, if you are to upset them for one roleplay reason or another. You also get one dice reroll per session of any npc gambling game, note you have to be playing at a NPC location that has a gambling game for this part of the perk to work. NPC’s choose the cool down time after you use this part of the Luck perk.`}
+            <Text style={styles.text}>
+              Gas grenades are designated by yellow smoke, players wearing a
+              proper gas apparatus are immune to gas. Proper gas apparatus will
+              be designated as a real gas mask, respirator, or full face eye
+              protection with attached hoses and tanks. PA users are immune to
+              gas. Any unprotected player caught in this area of effect is now
+              bleeding out. Fire Grenades (Red)
+            </Text>
+            <Text style={styles.text}>
+              Fire grenades are designated by red smoke. PA users are immune to
+              the effects of fire. Any unprotected player caught in this area of
+              effect is now bleeding out. Radiation Grenades (Green)
+            </Text>
+            <Text style={styles.text}>
+              Radiation grenades are designated by green smoke. When affected
+              the victim may use a “rad-away stick” immediately and leave the
+              area, otherwise they are now bleeding out. PA users are immune to
+              radiation. Any unprotected player caught in this area of effect is
+              now bleeding out. EMP grenades (Blue)
+            </Text>
+            <Text style={styles.text}>
+              Stun PA users for the duration that smoke is billowing from the
+              grenade and is surrounded by thick smoke. (Power armor users are
+              trained to know how long this is)
+            </Text>
+            <Text style={styles.text}>Traps</Text>
+            <Text style={styles.text}>
+              Most traps work like a melee attack, if you get hit by a bb or you
+              are within 5ft of the trap you are dead, no bleed out, go back to
+              spawn. Some traps may be rigged with grenades. For these, follow
+              any guidelines for the type of grenade released. Some traps may
+              shoot guns, these will act just as a normal gun but without a
+              user. For safety and game play do not physically move or mess with
+              the trap. Even if you see the trap before it goes off do not move
+              or mess with it by hand, however, shooting or throwing items at
+              traps is legal. Traps go through armor, shields and power armor
+              users are stunned for 30 seconds after being hit by a trap with
+              the only exemption being grenade and gun traps.
+            </Text>
+            <Text style={styles.textHeader}>Armor</Text>
+            <Text style={styles.text}>Ballistic Armor (bb proof)</Text>
+            <Text style={styles.text}>
+              Metal, tires, hard plastics, hardened leather, or EVA foam may be
+              used to make armor. If you are hit in an armor piece by an airsoft
+              round you are still in, but MUST yell out “armor hit.”
+            </Text>
+            <Text style={styles.text}>Power Armor (Juggernaut)</Text>
+            <Text style={styles.text}>
+              Power armor must be approved by admins. Contact admins if you want
+              to be eligible for power armor. Power armor can only be “killed”
+              by laser weapons, mini nukes, mortar and howitzer artillery-fired
+              shells. One shot from a laser weapon kills a power armor user. If
+              the Power armor user is within the “instant kill zone” (5ft of a
+              mini nuke, mortar or howitzer fired shell) they are dead. If the
+              power armor user is within the “bleeding out” zone the user is
+              stunned for 30 seconds. Power armor users are fitted with a “stun
+              plate” shooting them here with an airsoft gun will stun them for
+              10 seconds. When a power armor user is stunned, they can be killed
+              with an explosive weapon. Power Armor users can also be killed by
+              removing their core from their back. This will look like a yellow
+              and red rag hanging from their backside. Power Armor users can not
+              pick the agility or the endurance perk as their perk.
+            </Text>
+            <Text style={styles.text}>Shields</Text>
+            <Text style={styles.text}>
+              Shields may be made of metal, plastic, kevlar, or wood . A few
+              examples could be; a stop sign, riot shield, tower shield, etc.
+              Shields stop melee attacks, airsoft rounds and laser rounds. For
+              safety reasons there is no shield bashing. All Shields must be
+              approved before they can be used.
+            </Text>
+            <Text style={styles.textHeader}>Medical (Healing) and Looting</Text>
+            <Text style={styles.text}>Bleed out</Text>
+            <Text style={styles.text}>
+              After the two minute bleed out you are dead. If you get looted
+              once, then you go back to your spawn, even if your two minutes are
+              not up. You cannot be looted on your way back to spawn after bleed
+              out even if you were not looted before. From there you wait 1
+              minute to spawn back in. Stimpaks
+            </Text>
+            <Text style={styles.text}>
+              To use, rip the paper off the stimpak, then push the stimpak on to
+              the “bleeding” player. After that you or the player that as been
+              simpaked MUST yell out SIMPAK! The player is then back in the
+              game. You can not move or shoot when “bleeding out”, unless
+              someone moves you or you have the Endurance Perk. If the simpak
+              has exposed plastic or the wrapper is incomplete it can not be
+              used. Looting
+            </Text>
+            <Text style={styles.text}>
+              You may loot people, that are "bleeding out." You may only take
+              two items of the following, off of the person: up to four Nuka
+              Caps, one field gun, one magazine, one piece of field armor, one
+              field shield or one field melee weapon. Carrying Bodies
+            </Text>
+            <Text style={styles.text}>
+              You may use a two hand drag if your buddy is down. This means that
+              if you put both your hands on your buddy he may get up and WALK to
+              a new destination.
+            </Text>
+            <Text style={styles.textHeader}>Quests</Text>
+            <Text style={styles.text}>
+              Quest items will be marked with pink tape and will have the quest
+              title on it. You may not move quest item unless you are on that
+              quest to get that quest item. If you are to bleed out and die and
+              you have a quest item, you must drop that quest item where you
+              died. Once you respawn back in you may go back to get the quest
+              item. NPC’s that originally had said quest item may take the quest
+              item back. Note, a player may only have one side quest at a time.
+              If you wish to give up on a side quest, go back to the NPC that
+              hired you to do the quest and ask them to cancel the side quest.
+            </Text>
+            <Text style={styles.textHeader}>Chems</Text>
+            <Text style={styles.text}>Jet</Text>
+            <Text style={styles.text}>
+              Jet works as a one time use item. To use Jet, hold the item above
+              your head, pull the orange tape and yell, Jet! You then have ten
+              seconds of invulnerability, in which each second counts as one
+              step. In this time frame you can not use any weapons. Also you are
+              to have the Jet held above your head, must be shouting out your
+              ten second countdown and must be using your “steps.” You can buy
+              and refill Jet from the chem dealer in the game. You may bring out
+              your own Jet prop pieces, but you will have to “refill” your jet
+              first before using it.
+            </Text>
+            <Text style={styles.text}>Mentats</Text>
+            <Text style={styles.text}>
+              Mentats work as a one time charisma buff. To use Mentats you open
+              the container, and either eat or give the candy piece to the npc
+              you are dealing with. Mentats can only be found in game and are
+              sold by the chem dealer. They give a plus one boost your charisma
+              level. Note charisma can only be at these levels: Minus One, Zero,
+              and Plus One. Mentats have no effect on Super Mutants.
+            </Text>
+            <Text style={styles.textHeader}>Perks</Text>
+            <Text style={styles.text}>
+              Every player gets one Starting Perk, SP for short, these SP’s are:
+              strength, perception, endurance, charisma, intelligence, agility
+              and luck. Your starting perk will be labeled by your arm band that
+              you get after you pay.
+            </Text>
+            <Text style={styles.text}>Strength</Text>
+            <Text style={styles.text}>
+              Gives you the ability to “pick up” a player but with more options.
+              When touching the player, you may use one hand, and you can run
+              with your “bleeding out” buddy to a safer area. Note, your buddy
+              is still “bleeding out” when moving him. You also may use one hand
+              to melee someone, but you must still say “melee.”
+            </Text>
+            <Text style={styles.text}>Perception</Text>
+            <Text style={styles.text}>
+              Gives you a map of possible trap areas, possible loot spots.
+              Players with this perception can be trained to use in-game mortar
+              artillery and howitzer artillery. Note: only players with this
+              perk and training to use the artillery, can use or move the
+              artillery cannons.
+            </Text>
+            <Text style={styles.text}>Endurance</Text>
+            <Text style={styles.text}>
+              Gives you the ability to crawl when ‘Bleeding out,” you must still
+              have your dead rag out though.
+            </Text>
+            <Text style={styles.text}>Charisma</Text>
+            <Text style={styles.text}>
+              Unlocks better prices, more quests, or special items with NPCs or
+              Faction leaders. Can be used to get special treatment or dialogue
+              with NPCs and sometimes even beasts can be swayed by your charm.
+            </Text>
+            <Text style={styles.text}>Intelligence</Text>
+            <Text style={styles.text}>
+              Unlocks different quests, specials items, and gives out
+              intelligence codes for non-quest combo lock boxes.
+            </Text>
+            <Text style={styles.text}>Agility</Text>
+            <Text style={styles.text}>
+              Allows you to leave the area of effect of all smoke based attacks.
+              Once the smoke lands and you are in the area of effect, which is
+              10ft or wherever the smoke moves, you can leave the area without
+              being affected by that colored smoke, though you must leave that
+              area immediately and must yell out AGILITY! Note: you can not
+              enter into that area of effect of the colored smoke or you will
+              then be under the effect of that color of smoke
+            </Text>
+            <Text style={styles.text}>Luck</Text>
+            <Text style={styles.text}>
+              Gives you ability to potentially get out of trouble with NPCs or
+              Faction Leaders, if you are to upset them for one roleplay reason
+              or another, but usually only once a day per NPC. You also get one
+              dice reroll per session of any NPC gambling game, note you have to
+              be playing at an NPC location that has a gambling game for this
+              part of the perk to work. NPC’s choose the cool down time after
+              you use this part of the Luck perk.
             </Text>
           </ScrollView>
         </View>
@@ -165,7 +422,63 @@ export default class App extends Component {
             </Text>
             <Text style={styles.textHeader}>Monster Mash</Text>
             <Text style={styles.text}>
-              {`Joplin Wasteland is proud to present our next event, Monster Mash! In our last event we saw a horde of raiders lay siege to the town of Wata-Pa. The town may have held up, but at what cost? In the end the raiders took what they wanted and left. Now dark times fall on the town as they have no mayor and monsters have started to roam outside the town, feeding on the dead. All while the left over raiders form the Order of the Claw to worship these beasts and it seems the mob boss Ace is back in town. Will you help the new sheriff and his deputy bring law and order to the town of Wate-Pa? Will you help the Order of the Claw bring about an age of monsters? Will you go on a monster raid with the hunters of Woodsend or be a monster? Will the mob hire you to collect a kill? Or will you go out on your adventure in a colder, darker and more split wasteland? Find out in our next game, Joplin Wasteland Monster Mash!\n\nTickets Prices- 20$ Game charge fee\n\nTime events- 16th of November, 9am sign in, 1030am game briefs, 11am game begins, 5pm game ends.\n\nIn this event all player ammo will be proved at the event, giving you the player the choice to buy your ammo in game from any ammo vendor.\n\nAll players start out as wanderers and can choose to join/quit Npc groups as they see fit. The two groups in this game are the Town Guards and the Order of the Claw. The Town Guards are made up of the Wate-Pa Guards who help keep the peace and enforce the law. Their tape color will be bright light blue. The Order of the Claw are made up of ex raiders that wish to spread the word of the beast, tax the land and kill those that don't pay up or offer their help to the cause. Their tape color will be bright yellow.\n\nWhen a player joins a said group they will be marked with their colors and will now spawn at said group's spawn, until they quit that group. Note if a player is apart of a Npc group they can not use the Wanderer spawn. Players do not have to join a Npc group and may wander about as they wish and will share the wanderer spawn with other wanderers.`}
+              Joplin Wasteland is proud to present our next event, The Bear and
+              The Bull. In our last event we saw the rise and fall of a group of
+              crazy cultists that worshiped monsters. With that threat gone the
+              town of Wata-Pa could now grow into a hub of trade and power. This
+              would draw in the eyes of the expanding NCR and the eyes of a
+              weakened Legion. With both scouting groups ready to strike against
+              each other for control of the trade routes of the town, what will
+              you do? Will you side with Eastern Bear Scouts? Will you join the
+              Sons of Caesar? Will you take up the call to become a town guard?
+              Or will you try to go your own way? How much does the trade guide
+              hire for caravan guards? What jobs are available in town? And just
+              what is the Mob planing? Find out in the next game, The Bear and
+              the Bull!
+            </Text>
+            <Text style={styles.text}>
+              Tickets Prices- 30$ Game charge fee for two day ticket at gate.
+              25$ for one day ticket at gate, if you pay for a one day ticket
+              then are able to come out for day two, a day two ticket will be
+              10$.
+            </Text>
+            <Text style={styles.text}>
+              Time events- 21st of March, 9am sign in, 1030am game briefs, 11am
+              game begins, 430pm game item and ammo turn in, 5pm game ends. 22nd
+              of March, 9am sign in, 10am game begins, 3pm game ends and end
+              game auction begins. Please read the rules as it outlines the
+              safely guild lines as this is an airsoft and larp event.
+            </Text>
+            <Text style={styles.text}>
+              In this event all player ammo will be proved at the event, giving
+              you the player the choice to buy your ammo in game from any ammo
+              vendor.
+            </Text>
+            <Text style={styles.text}>
+              All players start out as wanderers and can choose to join/ quit
+              Npc groups as they see fit. The three groups in this game are the
+              Town Guards, The Eastern Bear Scouts and The Sons of Caesar. The
+              Town Guards are made up of the Wate-Pa Guards, detectives and
+              court officials who help keep the peace and enforce the law. Their
+              tape color will be bright light blue. The Eastern Bear Scouts are
+              made up of NRC scouts, rangers and troopers. Weak on funds they
+              plan on taxing the area they control to pay their men. They
+              promise a safer and better way of life for the wastelanders of
+              Wata-Pa, but something feels off about them. Their tape color will
+              be bright green. Lastly is are The Sons of Caesar, made up of
+              raider slaves, legionnaires, and followers of the Cult of Mars.
+              They plan on claiming the trade routes as their own and are
+              hostile anyone that opposes them. These trade routes will be vital
+              for their slave trade, but one would ask who is selling them their
+              slaves? Their tape color will be bright yellow.
+            </Text>
+            <Text style={styles.text}>
+              When a player joins a said group they will be marked with their
+              colors and will now spawn at said group's spawn, until they quit
+              that group. Note if a player is apart of a Npc group they can not
+              use the Wanderer spawn. Players do not have to join a Npc group
+              and may wander about as they wish and will share the wanderer
+              spawn with other wanderers.
             </Text>
           </ScrollView>
         </View>
@@ -259,11 +572,13 @@ export default class App extends Component {
               </Text>
             </TouchableOpacity>
           )}
-            <TouchableOpacity onPress={() => {
-              Linking.openURL('https://drive.google.com/file/d/18N5mt-UG0r-9vybiVJ_mlu5rCUG1h_tt/vie://drive.google.com/file/d/1Gx63VFtjXlBBCeSDaah4O9CJ_u0S0oel/view')
+          <TouchableOpacity
+            onPress={() => {
+              Linking.openURL(
+                'https://drive.google.com/file/d/18N5mt-UG0r-9vybiVJ_mlu5rCUG1h_tt/vie://drive.google.com/file/d/1Gx63VFtjXlBBCeSDaah4O9CJ_u0S0oel/view',
+              );
             }}>
-            <Text
-              style={[styles.radioStationText]}>
+            <Text style={[styles.radioStationText]}>
               Joplin Atomic Radio [DOWNLOAD]
             </Text>
           </TouchableOpacity>
