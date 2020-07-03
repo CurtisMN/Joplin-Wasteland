@@ -30,6 +30,8 @@
     },
     "android": {
       "package": "com.joplinwasteland.www"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/CurtisMN/joplin-wasteland"
   }
 }

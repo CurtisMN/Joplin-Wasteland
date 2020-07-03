@@ -420,7 +420,7 @@ export default class App extends Component {
               }}>
               Current Game Info
             </Text>
-            <Text style={styles.textHeader}>Monster Mash</Text>
+            <Text style={styles.textHeader}>The Bear and the Bull</Text>
             <Text style={styles.text}>
               Joplin Wasteland is proud to present our next event, The Bear and
               The Bull. In our last event we saw the rise and fall of a group of
@@ -443,10 +443,14 @@ export default class App extends Component {
               10$.
             </Text>
             <Text style={styles.text}>
-              Time events- 21st of March, 9am sign in, 1030am game briefs, 11am
-              game begins, 430pm game item and ammo turn in, 5pm game ends. 22nd
-              of March, 9am sign in, 10am game begins, 3pm game ends and end
-              game auction begins. Please read the rules as it outlines the
+              {'\n'}
+              Time events- September 19-20
+              {'\n'}
+              Saturday 9am-5pm
+              {'\n'}
+              Sunday 9am-3pm
+              {'\n'}
+              Please read the rules as it outlines the
               safely guild lines as this is an airsoft and larp event.
             </Text>
             <Text style={styles.text}>
@@ -567,9 +571,7 @@ export default class App extends Component {
                   styles.radioStationText,
                   this.state.activeStation === 'jar1' &&
                     styles.radioStationTextActive,
-                ]}>
-                Ozark Mountain Radio - FM
-              </Text>
+                ]}>Joplin Atomic Radio - FM</Text>
             </TouchableOpacity>
           )}
           <TouchableOpacity
