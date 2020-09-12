@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
-const NavBar = ({ activeTab, setActiveTab }) => (
+const NavBar = ({ activeTab, setActiveTab, adminMode }) => (
   <View style={styles.navBar}>
     <TouchableOpacity onPress={() => setActiveTab('rules')}>
       <View
@@ -39,6 +39,17 @@ const NavBar = ({ activeTab, setActiveTab }) => (
         <Text style={[styles.navText]}>RADIO</Text>
       </View>
     </TouchableOpacity>
+    {adminMode && (
+      <TouchableOpacity onPress={() => setActiveTab('admin')}>
+        <View
+          style={[
+            activeTab === 'admin' && styles.activeNavMenuItem,
+            styles.navMenuItem,
+          ]}>
+          <Text style={[styles.navText]}>ADMIN</Text>
+        </View>
+      </TouchableOpacity>
+    )}
   </View>
 );
 

@@ -11,10 +11,12 @@ let radio1 = new Audio.Sound((mode = { staysActiveInBackground: true }));
 let time = 0;
 let radioLength = 0;
 
-const Radio = ({ activeTab }) => {
+const Radio = ({ activeTab, unlockAdminPage }) => {
   const [radioStartTime, setRadioStartTime] = useState();
   const [radioFileLoaded, setRadioFileLoaded] = useState(false);
   const [activeStation, setActiveStation] = useState();
+  const [code, setCode] = useState('');
+  const [adminAccess, setAdminAccess] = useState(false);
   const [devMode, setDevMode] = useState(false);
   const formatMilliseconds = ms => {
     let milliseconds = parseInt(ms % 1000);
@@ -47,6 +49,27 @@ const Radio = ({ activeTab }) => {
         console.log(error);
       });
   }, []);
+
+  const passCheck = char => {
+    switch(char) {
+      case 'n':
+        setCode(code === '' ? 'n' : '');
+        break;
+      case 'k':
+        setCode(code === 'nw' ? 'nwk' : '');
+        break;
+      case 'b':
+        setCode(code === 'nwk' ? 'nwkb' : '');
+        break;
+      case 'w':
+        setCode(code === 'n' ? 'nw' : '');
+        break;
+    }
+  };
+
+  const checkCode = () => {
+    if (code === 'nwkb') unlockAdminPage();
+  }
 
   return activeTab !== "radio" ? null : (
     <View style={[styles.content, styles.radio]}>
@@ -118,7 +141,7 @@ const Radio = ({ activeTab }) => {
         }}
       />
       <View style={{ width: "100%", paddingTop: 30, paddingLeft: 15 }}>
-        <Text style={styles.radioStationTextOutOfRangeLabel}>OUT OF RANGE</Text>
+        <Text style={styles.radioStationTextOutOfRangeLabel} onPress={checkCode}>OUT OF RANGE</Text>
       </View>
       {!radioFileLoaded && (
         <Text
@@ -129,11 +152,13 @@ const Radio = ({ activeTab }) => {
       )}
       <Text
         style={[styles.radioStationText, styles.radioStationTextOutOfRange]}
+        onPress={() => passCheck('n')}
       >
         NOAA Weather
       </Text>
       <Text
         style={[styles.radioStationText, styles.radioStationTextOutOfRange]}
+        onPress={() => passCheck('k')}
       >
         Kansas City Now
       </Text>
@@ -143,6 +168,7 @@ const Radio = ({ activeTab }) => {
           devMode ? alert("Dev mode deactivated") : alert("Dev mode activated");
           setDevMode(!devMode);
         }}
+        onPress={() => passCheck('b')}
       >
         <Text
           style={[styles.radioStationText, styles.radioStationTextOutOfRange]}
@@ -152,6 +178,7 @@ const Radio = ({ activeTab }) => {
       </TouchableOpacity>
       <Text
         style={[styles.radioStationText, styles.radioStationTextOutOfRange]}
+        onPress={() => passCheck('w')}
       >
         Webb City Tunes
       </Text>
@@ -205,5 +232,5 @@ const styles = StyleSheet.create({
   },
   radioStationTextOutOfRange: {
     color: "gray"
-  }
+  },
 });
