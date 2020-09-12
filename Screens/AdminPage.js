@@ -28,7 +28,7 @@ const AdminPage = ({ activeTab }) => {
                 ...{fontSize: 30, paddingBottom: 20, alignSelf: 'center', textAlign: 'center'},
               }}
             >
-              ADMIN INFO PAGE - COMING SOON
+              CAST INFO PAGE - COMING SOON
             </Text>
           )
         )}

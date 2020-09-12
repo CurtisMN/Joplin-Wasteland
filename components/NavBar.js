@@ -46,7 +46,7 @@ const NavBar = ({ activeTab, setActiveTab, adminMode }) => (
             activeTab === 'admin' && styles.activeNavMenuItem,
             styles.navMenuItem,
           ]}>
-          <Text style={[styles.navText]}>ADMIN</Text>
+          <Text style={[styles.navText]}>CAST</Text>
         </View>
       </TouchableOpacity>
     )}
