@@ -1,32 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ScrollView, StyleSheet, View} from "react-native";
-import Basics from '../components/Basics';
+import RulesPage from '../components/RulesPage';
 import SectionsList from "../components/SectionsList";
-import Combat from "../components/Combat";
-import Armor from "../components/Armor";
-import MedicalAndLooting from "../components/MedicalAndLooting";
-import Quests from "../components/Quests";
-import Chems from "../components/Chems";
-import Perks from "../components/Perks";
-import Safety from "../components/Safety";
+const list = ['basics', 'combat', 'armor', 'medical-and-looting', 'quests', 'safety'];
 
 const Rules = ({ activeTab }) => {
   const [activePage, setActivePage] = useState(null);
+  const [markdown, setMarkdown] = useState({
+    'basics': '',
+    'combat': '',
+    'armor': '',
+    'medical-and-looting': '',
+    'quests': '',
+    'safety': '',
+  });
 
-  const setActive = page => setActivePage(page);
+  const retrieveRulesFromInernet = async (page) => {
+    const testUrl = `https://raw.githubusercontent.com/CurtisMN/joplin-wasteland-rules/master/${page}.md`;
+    const { data } = await axios.get(testUrl);
+    return data;
+  };
+
+  const retrieveRulesFromStorage = async (page) => {
+    try {
+      const rules = await AsyncStorage.getItem(page);
+      return rules;
+    } catch {
+      return `Failed to retrieve ${page}`
+    }
+  };
+
+  const retrieveRules = async (page) => {
+    try {
+      const rules = await retrieveRulesFromInernet(page);
+      await AsyncStorage.setItem(page, rules);
+      return rules;
+    } catch {
+      return await retrieveRulesFromStorage(page);
+    }
+  };
+
+  const fetchRules = async () => {
+    const basics = await retrieveRules('basics');
+    const combat = await retrieveRules('combat');
+    const armor = await retrieveRules('armor');
+    const medicalAndLooting = await retrieveRules('medical-and-looting');
+    const quests = await retrieveRules('quests');
+    const safety = await retrieveRules('safety');
+    setMarkdown({
+      basics, combat, armor, "medical-and-looting": medicalAndLooting, quests, safety,
+    })
+  }
+
+  useEffect(() => {
+    fetchRules();
+  }, []);
 
   return activeTab === 'rules' && (
     <View style={[styles.content, styles.rules]}>
       <ScrollView contentContainerStyle={{paddingBottom: 80}} style={{padding: 30}}>
-        <SectionsList activePage={activePage} setActivePage={setActive} />
-        <Basics activePage={activePage} setActivePage={setActive} />
-        <Combat activePage={activePage} setActivePage={setActive} />
-        <Armor activePage={activePage} setActivePage={setActive} />
-        <MedicalAndLooting activePage={activePage} setActivePage={setActive} />
-        <Quests activePage={activePage} setActivePage={setActive} />
-        <Chems activePage={activePage} setActivePage={setActive} />
-        <Perks activePage={activePage} setActivePage={setActive} />
-        <Safety activePage={activePage} setActivePage={setActive} />
+        <SectionsList list={list} activePage={activePage} setActivePage={page => setActivePage(page)} />
+        {Object.keys(markdown).map(item => (
+          <RulesPage
+            key={item}
+            page={item}
+            activePage={activePage}
+            setActivePage={() => setActivePage(null)}
+            markdown={markdown[item]}
+          />
+        ))}
       </ScrollView>
     </View>
   );
