@@ -4,5 +4,6 @@
   "dev": true,
   "minify": false,
   "urlRandomness": "df-zv8",
-  "https": false
+  "https": false,
+  "scheme": null
 }

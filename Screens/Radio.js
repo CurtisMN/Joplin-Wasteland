@@ -4,9 +4,10 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { Audio } from "expo-av";
+
 let radio1 = new Audio.Sound((mode = { staysActiveInBackground: true }));
 let time = 0;
 let radioLength = 0;

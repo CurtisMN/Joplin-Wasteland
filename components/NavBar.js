@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
-const NavBar = ({ activeTab, setActiveTab, adminMode }) => (
+const NavBar = ({ activeTab, setActiveTab, adminMode, hideRadio }) => (
   <View style={styles.navBar}>
     <TouchableOpacity onPress={() => setActiveTab('rules')}>
       <View
@@ -21,6 +21,15 @@ const NavBar = ({ activeTab, setActiveTab, adminMode }) => (
         <Text style={[styles.navText]}>DATA</Text>
       </View>
     </TouchableOpacity>
+    <TouchableOpacity onPress={() => setActiveTab('bio')}>
+      <View
+        style={[
+          activeTab === 'bio' && styles.activeNavMenuItem,
+          styles.navMenuItem,
+        ]}>
+        <Text style={[styles.navText]}>BIO</Text>
+      </View>
+    </TouchableOpacity>
     <TouchableOpacity onPress={() => setActiveTab('map')}>
       <View
         style={[
@@ -30,15 +39,17 @@ const NavBar = ({ activeTab, setActiveTab, adminMode }) => (
         <Text style={[styles.navText]}>MAP</Text>
       </View>
     </TouchableOpacity>
-    <TouchableOpacity onPress={() => setActiveTab('radio')}>
-      <View
-        style={[
-          activeTab === 'radio' && styles.activeNavMenuItem,
-          styles.navMenuItem,
-        ]}>
-        <Text style={[styles.navText]}>RADIO</Text>
-      </View>
-    </TouchableOpacity>
+    {!hideRadio && (
+      <TouchableOpacity onPress={() => setActiveTab('radio')}>
+        <View
+          style={[
+            activeTab === 'radio' && styles.activeNavMenuItem,
+            styles.navMenuItem,
+          ]}>
+          <Text style={[styles.navText]}>RADIO</Text>
+        </View>
+      </TouchableOpacity>
+    )}
     {adminMode && (
       <TouchableOpacity onPress={() => setActiveTab('admin')}>
         <View
