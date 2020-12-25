@@ -7,6 +7,7 @@ import Bio from "./Screens/Bio";
 import Map from "./Screens/Map";
 import Radio from "./Screens/Radio";
 import AdminPage from './Screens/AdminPage';
+import Items from './Screens/Items';
 
 const isIOS = Platform.OS === 'ios';
 
@@ -44,6 +45,7 @@ export default class App extends Component {
         <Data activeTab={activeTab} />
         <Bio activeTab={activeTab} />
         <Map activeTab={activeTab} />
+        <Items activeTab={activeTab} />
         {!isIOS && <Radio activeTab={activeTab} unlockAdminPage={() => this.unlockAdminPage()} />}
         <AdminPage activeTab={activeTab} />
         {this.state.activeTab === 'radio' && <Radio/>}

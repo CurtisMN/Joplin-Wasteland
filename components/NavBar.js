@@ -39,7 +39,16 @@ const NavBar = ({ activeTab, setActiveTab, adminMode, hideRadio }) => (
         <Text style={[styles.navText]}>MAP</Text>
       </View>
     </TouchableOpacity>
-    {!hideRadio && (
+    <TouchableOpacity onPress={() => setActiveTab('items')}>
+      <View
+        style={[
+          activeTab === 'items' && styles.activeNavMenuItem,
+          styles.navMenuItem,
+        ]}>
+        <Text style={[styles.navText]}>ITEMS</Text>
+      </View>
+    </TouchableOpacity>
+    {false && (
       <TouchableOpacity onPress={() => setActiveTab('radio')}>
         <View
           style={[
